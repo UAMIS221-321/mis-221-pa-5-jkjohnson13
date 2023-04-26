@@ -1,0 +1,15 @@
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/bin/Debug/net7.0/mis-221-pa-5-jkjohnson13
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/bin/Debug/net7.0/mis-221-pa-5-jkjohnson13.deps.json
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/bin/Debug/net7.0/mis-221-pa-5-jkjohnson13.runtimeconfig.json
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/bin/Debug/net7.0/mis-221-pa-5-jkjohnson13.dll
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/bin/Debug/net7.0/mis-221-pa-5-jkjohnson13.pdb
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/obj/Debug/net7.0/mis-221-pa-5-jkjohnson13.csproj.AssemblyReference.cache
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/obj/Debug/net7.0/mis-221-pa-5-jkjohnson13.GeneratedMSBuildEditorConfig.editorconfig
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/obj/Debug/net7.0/mis-221-pa-5-jkjohnson13.AssemblyInfoInputs.cache
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/obj/Debug/net7.0/mis-221-pa-5-jkjohnson13.AssemblyInfo.cs
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/obj/Debug/net7.0/mis-221-pa-5-jkjohnson13.csproj.CoreCompileInputs.cache
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/obj/Debug/net7.0/mis-221-pa-5-jkjohnson13.dll
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/obj/Debug/net7.0/refint/mis-221-pa-5-jkjohnson13.dll
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/obj/Debug/net7.0/mis-221-pa-5-jkjohnson13.pdb
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/obj/Debug/net7.0/mis-221-pa-5-jkjohnson13.genruntimeconfig.cache
+/Users/jadenjohnson/Documents/MIS221Source/Repos/Spring23/mis-221-pa-5-jkjohnson13/obj/Debug/net7.0/ref/mis-221-pa-5-jkjohnson13.dll
