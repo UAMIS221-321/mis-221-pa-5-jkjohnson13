@@ -71,7 +71,7 @@ namespace mis_221_pa_5_jkjohnson13
                     double count = sessions[0].GetCost();
                     for(int i = 0; i < Session.GetCount(); i++)
                     {
-                        if(DateTime.Parse(sessions[i].GetDate()).Month.ToString() == curr && sessions[i].GetAvailable() == "PAID")
+                        if(DateTime.Parse(sessions[i].GetDate()).Month.ToString() == curr)
                         {
                             count += sessions[i].GetCost();
                         }
@@ -80,6 +80,8 @@ namespace mis_221_pa_5_jkjohnson13
                             ProcessBreakMonth(ref curr, ref count, sessions[i]);
                         }
                     }
+                    
+                        
                     ProcessBreak2(curr, count);
                 }
                 else if(choice == "2")
@@ -88,7 +90,7 @@ namespace mis_221_pa_5_jkjohnson13
                     double count = sessions[0].GetCost();
                     for(int i = 0; i < Session.GetCount(); i++)
                     {
-                        if(DateTime.Parse(sessions[i].GetDate()).Year.ToString() == curr && sessions[i].GetAvailable() == "PAID")
+                        if(DateTime.Parse(sessions[i].GetDate()).Year.ToString() == curr)
                         {
                             count += sessions[i].GetCost();
                         }
