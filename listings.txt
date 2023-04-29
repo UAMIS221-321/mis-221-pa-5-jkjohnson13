@@ -1,7 +1,10 @@
-1#Jaden Johnson#4/25/2023#11:30 AM#50#CLOSED
-2#David Jefferson#4/25/2023#10:00 PM#75#CLOSED
-3#Kalen Elliot#4/25/2023#2:00 PM#25#CLOSED
+1#Jaden Johnson#4/25/2023#11:30 AM#50#PAID
+2#David Jefferson#4/25/2023#10:00 PM#75#PAID
+3#Kalen Elliot#4/25/2023#2:00 PM#25#PAID
 4#Kameron Bryan#4/27/2023#8:00 AM#35#OPEN
 5#Kalen Elliot#4/27/2023#3:30 PM#90#CLOSED
 6#Jaden Johnson#4/28/2023#6:00 PM#45#CLOSED
 7#David Jefferson#5/10/2023#6:00 AM#67#OPEN
+8#Kentrez Hunt#8/29/2024#10:00 AM#60#OPEN
+9#Bobby Keahey#7/3/2024#9:00 PM#90#CLOSED
+10#Jaden Johnson#6/5/2023#12:00 PM#20#OPEN

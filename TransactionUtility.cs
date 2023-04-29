@@ -190,6 +190,7 @@ namespace mis_221_pa_5_jkjohnson13
                     int setID = int.Parse(Console.ReadLine());
                     int bookID = setID - 1;
                     transactions[bookID].SetStatus("COMPLETED");
+                    sessions[searchID].SetAvailable("PAID");
 
                     choice = "3"; 
                 }

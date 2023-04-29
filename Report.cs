@@ -53,6 +53,78 @@ namespace mis_221_pa_5_jkjohnson13
 
             DisplayAllSessions();
         }
+        public void RevenueReport()
+        {
+            Console.Clear();
+
+            SortByDateTime();
+            string choice = "";
+
+            while(choice != "3")
+            {
+                System.Console.WriteLine("\n(1) By Month\n(2) By Year\n(3) Exit");
+                choice = Console.ReadLine();
+
+                if(choice == "1")
+                {
+                    string curr = DateTime.Parse(sessions[0].GetDate()).Month.ToString();
+                    double count = sessions[0].GetCost();
+                    for(int i = 0; i < Session.GetCount(); i++)
+                    {
+                        if(DateTime.Parse(sessions[i].GetDate()).Month.ToString() == curr && sessions[i].GetAvailable() == "PAID")
+                        {
+                            count += sessions[i].GetCost();
+                        }
+                        else
+                        {
+                            ProcessBreakMonth(ref curr, ref count, sessions[i]);
+                        }
+                    }
+                    ProcessBreak2(curr, count);
+                }
+                else if(choice == "2")
+                {
+                    string curr = DateTime.Parse(sessions[0].GetDate()).Year.ToString();
+                    double count = sessions[0].GetCost();
+                    for(int i = 0; i < Session.GetCount(); i++)
+                    {
+                        if(DateTime.Parse(sessions[i].GetDate()).Year.ToString() == curr && sessions[i].GetAvailable() == "PAID")
+                        {
+                            count += sessions[i].GetCost();
+                        }
+                        else
+                        {
+                            ProcessBreakYear(ref curr, ref count, sessions[i]);
+                        }
+                    }
+                    ProcessBreak2(curr, count);
+                }
+                else if(choice == "3")
+                {
+                    //exit
+                }
+                else
+                {
+                    System.Console.WriteLine("INVALID INPUT. Please select a valid option.\n");
+                }
+            }
+        }
+        public void ProcessBreakMonth(ref string curr, ref double count, Session newSession)
+        {
+            System.Console.WriteLine($"{curr}: ${count}");
+            curr = DateTime.Parse(newSession.GetDate()).Month.ToString();
+            count = newSession.GetCost();
+        }
+        public void ProcessBreakYear(ref string curr, ref double count, Session newSession)
+        {
+            System.Console.WriteLine($"{curr}: ${count}");
+            curr = DateTime.Parse(newSession.GetDate()).Year.ToString();
+            count = newSession.GetCost();
+        }
+        public void ProcessBreak2(string curr, double count)
+        {
+            System.Console.WriteLine($"{curr}: ${count}");
+        }
         private void SwapSessions(int x, int y)
         {
             Session temp = sessions[x];
@@ -69,7 +141,6 @@ namespace mis_221_pa_5_jkjohnson13
                 System.Console.WriteLine(transactions[i].ToString());
             }
         }
-
         public void Individual()
         {
             System.Console.Write("Enter your email address to see report: ");
@@ -107,6 +178,7 @@ namespace mis_221_pa_5_jkjohnson13
         public void CustomerSessions()
         {
             Console.Clear();
+
             SortByNameDate();
             string curr = transactions[0].GetCustomerName();
             int count = 0;

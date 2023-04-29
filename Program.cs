@@ -251,7 +251,7 @@ static void Reports(TrainerUtility trainerUtility, SessionUtility sessionUtility
         }
         else if(choice == "3")
         {
-            System.Console.WriteLine("Historical Revenue Report");
+            report.RevenueReport();
             Pause();
         }
         else if(choice == "4")
