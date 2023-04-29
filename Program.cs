@@ -5,15 +5,18 @@ Trainer[] trainers = new Trainer[100];
 TrainerUtility trainerUtility = new TrainerUtility(trainers);
 Session[] sessions = new Session[100];
 SessionUtility sessionUtility = new SessionUtility(sessions);
-// Transaction[] transactions = new Transaction[100];
-// TransactionUtility transactionUtility = new TransactionUtility(transactions);
-Report report = new Report(trainers, sessions);
+Transaction[] transactions = new Transaction[100];
+TransactionUtility transactionUtility = new TransactionUtility(transactions, sessions, trainers);
+Report report = new Report(trainers, sessions, transactions);
 
+trainerUtility.GetTrainerInfo();
+sessionUtility.GetSessionInfo();
+transactionUtility.GetTransactionInfo();
 
-DisplayMenu(trainers, trainerUtility, sessions, sessionUtility, report);
+DisplayMenu(trainers, trainerUtility, sessions, sessionUtility, transactions, transactionUtility, report);
 //*********END MAIN*********
 
-static void DisplayMenu(Trainer[] trainers, TrainerUtility trainerUtility, Session[] sessions, SessionUtility sessionUtility, Report report)
+static void DisplayMenu(Trainer[] trainers, TrainerUtility trainerUtility, Session[] sessions, SessionUtility sessionUtility, Transaction[] transactions, TransactionUtility transactionUtility, Report report)
 {
     string menu = "";
     
@@ -35,11 +38,11 @@ static void DisplayMenu(Trainer[] trainers, TrainerUtility trainerUtility, Sessi
         }
         else if(menu == "3")
         {
-            TransactionData();
+            TransactionData(sessionUtility, transactions, transactionUtility, report);
         }
         else if(menu == "4")
         {
-            Reports();
+            Reports(report);
         }
         else if(menu == "5")
         {
@@ -54,8 +57,6 @@ static void DisplayMenu(Trainer[] trainers, TrainerUtility trainerUtility, Sessi
 
 static void TrainerData(Trainer[] trainers, TrainerUtility trainerUtility, Report report)
 {
-    trainerUtility.GetTrainerInfo();
-
     string choice = "";
 
     while(choice != "4")
@@ -103,8 +104,6 @@ static void TrainerData(Trainer[] trainers, TrainerUtility trainerUtility, Repor
 
 static void SessionData(Session[] sessions, SessionUtility sessionUtility, Report report)
 {
-    sessionUtility.GetSessionInfo();
-
     string choice = "";
 
     while(choice != "4")
@@ -123,7 +122,9 @@ static void SessionData(Session[] sessions, SessionUtility sessionUtility, Repor
         }
         else if(choice == "2")
         {
-            System.Console.WriteLine("Edit a Session");
+            report.DisplayAllSessions();
+            sessionUtility.Search();
+            report.DisplayAllSessions();
             Pause();
         }
         else if(choice == "3")
@@ -144,15 +145,127 @@ static void SessionData(Session[] sessions, SessionUtility sessionUtility, Repor
     }
 }
 
-static void TransactionData()
+static void TransactionData(SessionUtility sessionUtility, Transaction[] transactions, TransactionUtility transactionUtility, Report report)
 {
-    System.Console.WriteLine("Booking Data");
+    string choice = "";
+
+    while(choice != "4")
+    {
+        Console.Clear();
+        
+        System.Console.WriteLine("---------Booking Data---------");
+        System.Console.WriteLine($"1. Book a Session\n2. Update Status\n3. Display Bookings\n4. Exit");
+        choice = Console.ReadLine();
+
+        if(choice == "1")
+        {   
+            transactionUtility.AddTransaction();
+            sessionUtility.Save();
+            report.DisplayAllTransactions();
+            Pause();
+        }
+        else if(choice == "2")
+        {
+            sessionUtility.Sort();
+            report.DisplayAllSessions();
+            transactionUtility.Search();
+            report.DisplayAllTransactions();
+            Pause();
+        }
+        else if(choice == "3")
+        {
+            report.DisplayAllTransactions();
+            Pause();
+        }
+        else if(choice == "4")
+        {
+            
+        }
+        else
+        {
+            InvalidInput();
+            Pause();
+        }
+
+    }
 }
 
-static void Reports()
+static void Reports(TrainerUtility trainerUtility, SessionUtility sessionUtility, Report report)
 {
+    Console.Clear();
+    
     System.Console.WriteLine("running reports...running reports...running reports");
     Pause();
+
+    string choice = "";
+
+    while(choice != "4")
+    {
+        Console.Clear();
+        
+        System.Console.WriteLine("---------Report Menu---------");
+        System.Console.WriteLine($"1. Individual Customer Sessions\n2. Historical Customer Sessions\n3. Historical Revenue Report\n4. Exit");
+        choice = Console.ReadLine();
+
+        if(choice == "1")
+        {   
+            report.Individual();
+            Pause();
+        }
+        else if(choice == "2")
+        {
+            string option = "";
+
+            while(option != "4")
+            {
+                System.Console.WriteLine($"\n---------Historical Customer Sessions---------");
+                System.Console.WriteLine($"(1) Sorted by Date\n(2) Sorted by Customer\n(3) Total Sessions by Customer\n(4) Exit");
+                option = Console.ReadLine();
+
+                if(option == "1")
+                {
+                    report.SortByDateTime();
+                    Pause();
+                }
+                else if(option == "2")
+                {
+                    report.SortByNameDate();
+                    Pause();
+                }
+                else if(option == "3")
+                {
+                    System.Console.WriteLine("Total Sessions");
+                    Pause();
+                }
+                else if(option == "4")
+                {
+
+                }
+                else
+                {
+                    InvalidInput();
+                    Pause();
+                }
+            }
+        }
+        else if(choice == "3")
+        {
+            System.Console.WriteLine("Historical Revenue Report");
+            Pause();
+        }
+        else if(choice == "4")
+        {
+            //back to menu
+        }
+        else
+        {
+            InvalidInput();
+            Pause();
+        }
+
+    }
+
+    
 }
 
 //*********OTHER METHODS*********

@@ -95,10 +95,7 @@ namespace mis_221_pa_5_jkjohnson13
         }
         
 
-        public string PlayerList() //List of trainers
-        {
-            return $"{trainerID}\t{name}\t{mailingAddress}\t{emailAddress}\t{active}";
-        }
+        //List of trainers
         public override string ToString()
         {
             return $"{trainerID.ToString().PadRight(2)} | {name.PadRight(15)} | {mailingAddress.PadRight(23)} | {emailAddress.PadRight(26)} | {active}";

@@ -54,8 +54,8 @@ namespace mis_221_pa_5_jkjohnson13
             System.Console.Write("Enter the time of the session (ex. 12:30 pm): ");
             DateTime specificTime = DateTime.Parse(Console.ReadLine());
             string startTime = specificTime.ToShortTimeString();
-            string endTime = specificTime.AddHours(1).ToShortTimeString();
-            mySession.SetTime($"{startTime} - {endTime}");
+            // string endTime = specificTime.AddHours(1).ToShortTimeString();
+            mySession.SetTime($"{startTime}");
 
             System.Console.Write("Enter the cost amount of the session: ");
             mySession.SetCost(double.Parse(Console.ReadLine()));
@@ -109,6 +109,97 @@ namespace mis_221_pa_5_jkjohnson13
             Session temp = sessions[x];
             sessions[x] = sessions[y];
             sessions[y] = temp;
+        }
+
+        public void Search()
+        {
+            Console.Write("Enter ID: ");
+            int searchVal = int.Parse(Console.ReadLine());
+            int searchID = BinarySearch(searchVal);
+
+            if(searchID == -1)
+            {
+                Console.WriteLine("\nSession does not exist\n\n");
+            }
+            else
+            {
+                Edit(searchID);
+                Save();
+            }
+        }
+
+        public int BinarySearch(int searchVal)
+        {   
+            int min = 0;
+            int max = Session.GetCount() - 1;
+
+            while(min <= max)
+            {
+                int mid = (max + min)/2;
+                
+                if(searchVal == sessions[mid].GetSessionID())
+                {
+                    return mid;
+                }
+                if(searchVal < sessions[mid].GetSessionID())
+                {
+                    max = mid - 1;
+                }
+                else
+                {
+                    min = mid + 1;
+                }
+            }
+
+            return -1;
+        }
+
+        public void Edit(int searchID)
+        {
+            string choice = ""; //To enter the choice
+            
+            while(choice != "5")
+            {
+                Console.WriteLine("\nWould you like to change the...\n(1) Trainer Name\n(2) Date\n(3) Time\n(4) Cost\n(5) Back to Listing Data\n"); //Main Menu options displayed
+                choice = Console.ReadLine(); //This will take their selection 
+                
+                if(choice == "1")
+                {
+                    Console.Write("Change current trainer name to: ");
+                    sessions[searchID].SetTrainerName(Console.ReadLine());
+                    choice = "5";
+                }
+                else if (choice == "2") 
+                {
+                    Console.Write("Change current date to (mm/dd/yyyy): ");
+                    DateTime specificDate = DateTime.Parse(Console.ReadLine());
+                    string date = specificDate.ToShortDateString();
+                    sessions[searchID].SetDate(date);
+                    choice = "5";
+                }
+                else if(choice == "3") 
+                {
+                    Console.Write("Change current time to (ex. 12:30 pm): ");
+                    DateTime specificTime = DateTime.Parse(Console.ReadLine());
+                    string startTime = specificTime.ToShortTimeString();
+                    sessions[searchID].SetTime($"{startTime}");
+                    choice = "5";
+                }
+                else if(choice == "4") 
+                {
+                    Console.Write("Change current cost to: ");
+                    sessions[searchID].SetCost(double.Parse(Console.ReadLine()));
+                    choice = "5";
+                }
+                else if(choice == "5") 
+                {
+                    //to exit menu
+                }
+                else
+                {
+                    Console.WriteLine("Invalid input. Please select one of the options");
+                }
+            }
         }
 
         public void Save()

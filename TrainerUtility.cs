@@ -82,8 +82,6 @@ namespace mis_221_pa_5_jkjohnson13
 
         public int BinarySearch(int searchVal)
         {
-            System.Console.WriteLine(Trainer.GetCount());
-            
             int min = 0;
             int max = Trainer.GetCount() - 1;
             int mid = (max + min)/2;

@@ -105,13 +105,10 @@ namespace mis_221_pa_5_jkjohnson13
         }
         
 
-        public string PlayerList() //List of Sessions
-        {
-            return $"{sessionID}\t{trainerName}\t{date}\t{time}\t${cost.ToString("#.##")}\t{available}";
-        }
+        //List of Sessions
         public override string ToString()
         {
-            return $"{sessionID.ToString().PadRight(2)} | {trainerName.PadRight(15)} | {date.PadRight(23)} | {time.PadRight(26)} | ${cost.ToString("#.##").PadRight(5)} | {available}";
+            return $"{sessionID.ToString().PadRight(2)} | {trainerName.PadRight(15)} | {date.PadRight(10)} | {time.PadRight(8)} | ${cost.ToString("#.##").PadRight(2)} | {available}";
         }
         public string ToFile()
         {
