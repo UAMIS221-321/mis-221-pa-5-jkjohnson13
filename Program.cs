@@ -42,7 +42,7 @@ static void DisplayMenu(Trainer[] trainers, TrainerUtility trainerUtility, Sessi
         }
         else if(menu == "4")
         {
-            Reports(report);
+            Reports(trainerUtility, sessionUtility, transactionUtility,report);
         }
         else if(menu == "5")
         {
@@ -190,7 +190,7 @@ static void TransactionData(SessionUtility sessionUtility, Transaction[] transac
     }
 }
 
-static void Reports(TrainerUtility trainerUtility, SessionUtility sessionUtility, Report report)
+static void Reports(TrainerUtility trainerUtility, SessionUtility sessionUtility, TransactionUtility transactionUtility, Report report)
 {
     Console.Clear();
     
@@ -230,11 +230,12 @@ static void Reports(TrainerUtility trainerUtility, SessionUtility sessionUtility
                 else if(option == "2")
                 {
                     report.SortByNameDate();
+                    report.DisplayAllTransactions();
                     Pause();
                 }
                 else if(option == "3")
                 {
-                    System.Console.WriteLine("Total Sessions");
+                    report.CustomerSessions();
                     Pause();
                 }
                 else if(option == "4")
@@ -265,7 +266,9 @@ static void Reports(TrainerUtility trainerUtility, SessionUtility sessionUtility
 
     }
 
-    
+    trainerUtility.Sort();
+    sessionUtility.Sort();
+    transactionUtility.Sort();
 }
 
 //*********OTHER METHODS*********

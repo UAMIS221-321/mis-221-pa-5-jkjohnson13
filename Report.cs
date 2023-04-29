@@ -103,10 +103,36 @@ namespace mis_221_pa_5_jkjohnson13
                     SwapTransactions(min, i);
                 }
             }
-
-            DisplayAllTransactions();
         }
-
+        public void CustomerSessions()
+        {
+            Console.Clear();
+            SortByNameDate();
+            string curr = transactions[0].GetCustomerName();
+            int count = 0;
+            for(int i = 0; i < Transaction.GetCount(); i++)
+            {
+                if(transactions[i].GetCustomerName() == curr)
+                {
+                    count++;
+                }
+                else
+                {
+                    ProcessBreak(ref curr, ref count, transactions[i]);
+                }
+            }
+            ProcessBreak(curr, count);
+        }
+        public void ProcessBreak(ref string curr, ref int count, Transaction newTrans)
+        {
+            System.Console.WriteLine($"{curr} has a total of {count} session(s)");
+            curr = newTrans.GetCustomerName();
+            count = 1;
+        }
+        public void ProcessBreak(string curr, int count)
+        {
+            System.Console.WriteLine($"{curr} has a total of {count} session(s)");
+        }
         public void SwapTransactions(int x, int y)
         {
             Transaction temp = transactions[x];

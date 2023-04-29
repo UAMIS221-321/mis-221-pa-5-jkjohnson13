@@ -215,6 +215,33 @@ namespace mis_221_pa_5_jkjohnson13
 
         }
 
+        public void Sort()
+        {
+            for(int i = 0; i < Transaction.GetCount() - 1; i++)
+            {
+                int min = i;
+
+                for(int j = i + 1; j < Transaction.GetCount(); j++)
+                {
+                    if(transactions[j].GetBookingID().CompareTo(transactions[min].GetBookingID()) < 0)
+                    {
+                        min = j;
+                    }
+                }
+
+                if(min != i)
+                {
+                    Swap(min, i);
+                }
+            }
+        }
+
+        public void Swap(int x, int y)
+        {
+            Transaction temp = transactions[x];
+            transactions[x] = transactions[y];
+            transactions[y] = temp;
+        }
 
 
         public void Save()
