@@ -13,6 +13,57 @@ namespace mis_221_pa_5_jkjohnson13
             this.transactions = transactions;
         }
 
+        public void SaveSession()
+        {
+            bool inLoop = true;
+
+            while(inLoop)
+            {
+                System.Console.WriteLine("\nWould you like to save this report? 'Yes' or 'No'");
+                string choice = Console.ReadLine().ToUpper();
+
+                if(choice == "YES")
+                {
+                    System.Console.Write("\nEnter existing report file or create a new one: ");
+                    string file = Console.ReadLine();
+                    
+                    StreamWriter outFile = new StreamWriter(file);
+     
+                    for(int i = 0; i < Session.GetCount(); i++)
+                    {
+                        outFile.WriteLine(sessions[i].ToFile());
+                    }
+
+                    outFile.Close();
+                }
+                inLoop = false;
+            }
+        }
+        public void SaveTransaction()
+        {
+            bool inLoop = true;
+
+            while(inLoop)
+            {
+                System.Console.WriteLine("\nWould you like to save this report? 'Yes' or 'No'");
+                string choice = Console.ReadLine().ToUpper();
+
+                if(choice == "YES")
+                {
+                    System.Console.Write("\nEnter existing report file or create a new one: ");
+                    StreamWriter outFile = new StreamWriter(Console.ReadLine());
+
+                    for(int i = 0; i < Transaction.GetCount(); i++)
+                    {
+                        outFile.WriteLine(transactions[i].ToFile());
+                    }
+
+                    outFile.Close();
+                }
+                inLoop = false;
+            }
+        }
+
         //*********TRAINER REPORTS*********
         public void DisplayAllTrainers()
         {
@@ -67,6 +118,8 @@ namespace mis_221_pa_5_jkjohnson13
 
                 if(choice == "1")
                 {
+                    Console.Clear();
+
                     string curr = DateTime.Parse(sessions[0].GetDate()).Month.ToString();
                     double count = sessions[0].GetCost();
                     for(int i = 0; i < Session.GetCount(); i++)
@@ -83,9 +136,12 @@ namespace mis_221_pa_5_jkjohnson13
                     
                         
                     ProcessBreak2(curr, count);
+                    SaveSession();
                 }
                 else if(choice == "2")
                 {
+                    Console.Clear();
+                    
                     string curr = DateTime.Parse(sessions[0].GetDate()).Year.ToString();
                     double count = sessions[0].GetCost();
                     for(int i = 0; i < Session.GetCount(); i++)
@@ -100,6 +156,7 @@ namespace mis_221_pa_5_jkjohnson13
                         }
                     }
                     ProcessBreak2(curr, count);
+                    SaveSession();
                 }
                 else if(choice == "3")
                 {
@@ -113,7 +170,7 @@ namespace mis_221_pa_5_jkjohnson13
         }
         public void ProcessBreakMonth(ref string curr, ref double count, Session newSession)
         {
-            System.Console.WriteLine($"{curr}: ${count}");
+            System.Console.WriteLine($"Month {curr}: ${count}");
             curr = DateTime.Parse(newSession.GetDate()).Month.ToString();
             count = newSession.GetCost();
         }
@@ -143,7 +200,7 @@ namespace mis_221_pa_5_jkjohnson13
                 System.Console.WriteLine(transactions[i].ToString());
             }
         }
-        public void Individual()
+        public void Individual() //Individual Reports
         {
             System.Console.Write("Enter your email address to see report: ");
             string email = Console.ReadLine();
@@ -155,6 +212,7 @@ namespace mis_221_pa_5_jkjohnson13
                     Console.WriteLine(transactions[i].ToString());
                 }
             }
+            SaveTransaction();
         }
         public void SortByNameDate()
         {
@@ -177,7 +235,7 @@ namespace mis_221_pa_5_jkjohnson13
                 }
             }
         }
-        public void CustomerSessions()
+        public void CustomerSessions() //For each customer provide total number of sessions
         {
             Console.Clear();
 
@@ -196,6 +254,7 @@ namespace mis_221_pa_5_jkjohnson13
                 }
             }
             ProcessBreak(curr, count);
+            SaveTransaction();
         }
         public void ProcessBreak(ref string curr, ref int count, Transaction newTrans)
         {

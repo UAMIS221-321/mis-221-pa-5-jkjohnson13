@@ -225,18 +225,17 @@ static void Reports(TrainerUtility trainerUtility, SessionUtility sessionUtility
                 if(option == "1")
                 {
                     report.SortByDateTime();
-                    Pause();
+                    report.SaveSession();
                 }
                 else if(option == "2")
                 {
                     report.SortByNameDate();
                     report.DisplayAllTransactions();
-                    Pause();
+                    report.SaveTransaction();
                 }
                 else if(option == "3")
                 {
                     report.CustomerSessions();
-                    Pause();
                 }
                 else if(option == "4")
                 {
@@ -252,7 +251,6 @@ static void Reports(TrainerUtility trainerUtility, SessionUtility sessionUtility
         else if(choice == "3")
         {
             report.RevenueReport();
-            Pause();
         }
         else if(choice == "4")
         {
