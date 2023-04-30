@@ -84,21 +84,22 @@ namespace mis_221_pa_5_jkjohnson13
         {
             int min = 0;
             int max = Trainer.GetCount() - 1;
-            int mid = (max + min)/2;
 
             while(min <= max)
             {
+                int mid = (max + min)/2;
+                
                 if(searchVal == trainers[mid].GetTrainerID())
                 {
                     return mid;
                 }
                 if(searchVal < trainers[mid].GetTrainerID())
                 {
-                    mid = min + 1;
+                    max = mid - 1;
                 }
                 else
                 {
-                    mid = max - 1;
+                    min = mid + 1;
                 }
             }
 
